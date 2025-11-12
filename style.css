@@ -1,34 +1,36 @@
-/* Corpo da página */
+/* Estilo geral da página */
 body {
+  background-color: #f0f8ff;
   display: flex;
-  justify-content: center;      /* Centraliza horizontalmente */
-  align-items: center;          /* Centraliza verticalmente */
-  height: 100vh;                /* Altura total da tela */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  background: linear-gradient(to right, #f8b500, #fceabb);
-  font-family: 'Arial Black', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Área do letreiro */
+/* Container do letreiro */
 .letreiro-container {
   position: relative;
-  width: 80%;                   /* Largura da área visível */
-  height: 120px;                /* Altura aumentada */
-  overflow: hidden;             /* Esconde o texto fora dos limites */
-  border: 4px solid #fff;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 20px;                /* Espaço livre em torno do texto */
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  width: 80%;          /* Largura da tela */
+  height: 100px;       /* Altura da tela */
+  border: 3px solid #0077b6;
+  border-radius: 15px;
+  background-color: #e0f7fa;
+  overflow: hidden;    /* Impede o texto de sair da área visível */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;       /* Espaço livre em torno do letreiro */
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
 /* Texto do letreiro */
-.letreiro-texto {
+.texto {
   position: absolute;
-  white-space: nowrap;          /* Impede quebra de linha */
-  font-size: 3.5em;             /* 👈 Letras maiores */
+  white-space: nowrap; /* Impede quebra de linha */
+  font-size: 2em;
+  color: #023e8a;
   font-weight: bold;
-  color: #ffffff;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
-  left: 0;
+  text-align: center;
 }
