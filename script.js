@@ -1,7 +1,7 @@
 const texto = document.getElementById('texto');
 const container = document.querySelector('.letreiro-container');
 
-let pos = 0;           // posição inicial do texto
+let pos = 0;           // posição inicial
 let direcao = 1;       // 1 = direita, -1 = esquerda
 let velocidade = 2;    // controla a velocidade (px por frame)
 
@@ -12,15 +12,15 @@ function animar() {
   const larguraTexto = texto.offsetWidth;
   const larguraContainer = container.offsetWidth;
 
-  // Inverte o movimento quando chega nas bordas
+  // Inverte direção quando chega nas bordas
   if (pos + larguraTexto >= larguraContainer) {
-    direcao = -1; // muda direção para esquerda
+    direcao = -1;
   } else if (pos <= 0) {
-    direcao = 1;  // muda direção para direita
+    direcao = 1;
   }
 
   requestAnimationFrame(animar);
 }
 
-// Inicia o letreiro
+// Inicia a animação
 animar();
