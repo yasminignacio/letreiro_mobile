@@ -3,7 +3,7 @@ const container = document.querySelector('.letreiro-container');
 
 let pos = 0;           // posição inicial
 let direcao = 1;       // 1 = direita, -1 = esquerda
-let velocidade = 2;    // controla a velocidade (px por frame)
+let velocidade = 3;    // controla a velocidade (px por frame)
 
 function animar() {
   pos += direcao * velocidade;
