@@ -1,36 +1,32 @@
-/* Estilo geral da página */
+/* Define a largura e altura da tela */
 body {
-  background-color: #f0f8ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
 }
 
-/* Container do letreiro */
-.letreiro-container {
+/* Área onde o letreiro se movimenta */
+.container {
   position: relative;
-  width: 80%;          /* Largura da tela */
-  height: 100px;       /* Altura da tela */
-  border: 3px solid #0077b6;
-  border-radius: 15px;
-  background-color: #e0f7fa;
-  overflow: hidden;    /* Impede o texto de sair da área visível */
+  width: 80%;   /* largura da área visível */
+  height: 100px; /* altura da área do letreiro */
+  border: 3px solid #0077cc;
+  background-color: #e8f5ff;
+  overflow: hidden; /* impede que o texto saia da área */
+  padding: 10px;    /* espaço livre em torno do letreiro */
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px;       /* Espaço livre em torno do letreiro */
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
-/* Texto do letreiro */
-.texto {
+/* Estilo do letreiro */
+#letreiro {
   position: absolute;
-  white-space: nowrap; /* Impede quebra de linha */
-  font-size: 2em;
-  color: #023e8a;
+  white-space: nowrap; /* impede quebra de linha */
+  font-size: 24px;
   font-weight: bold;
-  text-align: center;
+  color: #0077cc;
 }
