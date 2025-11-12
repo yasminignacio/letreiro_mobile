@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letreiro Motivacional</title>
+  <style>
+    /* Definindo o corpo da página */
+    body {
+      display: flex;
+      justify-content: center;      /* Centraliza horizontalmente */
+      align-items: center;          /* Centraliza verticalmente */
+      height: 100vh;                /* Altura da tela */
+      margin: 0;                    /* Remove margens padrão */
+      background: linear-gradient(to right, #f8b500, #fceabb);
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Container do letreiro */
+    .letreiro-container {
+      position: relative;
+      width: 80%;                   /* Largura da área do letreiro */
+      height: 80px;                 /* Altura da área do letreiro */
+      overflow: hidden;             /* Esconde o texto fora da área */
+      border: 3px solid #fff;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 10px;                /* Espaço livre em torno do texto */
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    /* Texto do letreiro */
+    .letreiro-texto {
+      position: absolute;
+      white-space: nowrap;          /* Impede quebra de linha */
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="letreiro-container">
+    <div class="letreiro-texto" id="texto">
+      🌟 Acredite em si mesmo e vá além dos seus limites! 🌟
+    </div>
+  </div>
+
+  <script>
+    const texto = document.getElementById('texto');
+    const container = document.querySelector('.letreiro-container');
+
+    let pos = 0;           // posição inicial do texto
+    let direcao = 1;       // 1 = direita, -1 = esquerda
+    let velocidade = 2;    // controle da velocidade (px por frame)
+
+    function animar() {
+      pos += direcao * velocidade;
+      texto.style.left = pos + 'px';
+
+      // Limites de movimento
+      const larguraTexto = texto.offsetWidth;
+      const larguraContainer = container.offsetWidth;
+
+      if (pos + larguraTexto >= larguraContainer) {
+        direcao = -1; // muda direção para esquerda
+      } else if (pos <= 0) {
+        direcao = 1;  // muda direção para direita
+      }
+
+      requestAnimationFrame(animar);
+    }
+
+    // Inicia o letreiro
+    animar();
+  </script>
+
+</body>
+</html>
