@@ -5,13 +5,13 @@
  */
 body {
   margin: 0;
-  height: 100vh;
+  height: 100vh; /* Requisito d (Altura): Altura total da viewport */
   /* Fundo com gradiente suave */
   background: linear-gradient(135deg, #f0f4f8 0%, #e0e7ee 100%); 
   font-family: 'Poppins', sans-serif; /* Tipografia mais moderna */
   color: #333;
   
-  /* Flexbox para centralização total */
+  /* Flexbox para centralização total do container */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,47 +23,32 @@ body {
  * ----------------------------------------------------
  */
 .container {
-  position: relative;
-  width: 90%;   /* Aumenta a largura para melhor aproveitamento em telas maiores */
-  max-width: 900px; /* Limite máximo para não esticar demais em monitores grandes */
-  height: 120px; /* Aumenta a altura para destaque */
+  /* O container deve ter 'position: relative' para que o '#letreiro' 
+     com 'position: absolute' se mova em relação a ele. */
+  position: relative; 
+  width: 90%;   /* Requisito d (Largura): Largura do container */
+  max-width: 900px; 
+  height: 120px; /* Requisito d (Altura): Altura do container */
   
   /* Borda sutil e arredondada com sombra */
   border: none;
   border-radius: 12px;
   box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.1), /* Sombra principal */
-    0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    0 4px 15px rgba(0, 0, 0, 0.1), 
+    0 1px 3px rgba(0, 0, 0, 0.05); 
     
-  /* Cor de fundo mais clara e elegante */
   background-color: #ffffff; 
   
+  /* Importante para o efeito de letreiro, esconde o texto que está fora */
   overflow: hidden; 
-  padding: 10px 15px; /* Ajusta o padding */
+  
+  /* Requisito e (Espaço livre/Padding): Cria o "espaço livre" interno */
+  padding: 10px 15px; 
+  
+  /* Requisito f (Alinhamento): Alinha o texto verticalmente no container */
   display: flex;
-  align-items: center;
+  align-items: center; 
 }
-
-/* Adiciona um efeito de máscara (opcional) para o texto parecer surgir/desaparecer nas bordas */
-/*
-.container::before,
-.container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 50px; 
-  height: 100%;
-  z-index: 10;
-}
-.container::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-}
-.container::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-}
-*/
 
 /*
  * ----------------------------------------------------
@@ -71,14 +56,20 @@ body {
  * ----------------------------------------------------
  */
 #letreiro {
-  position: absolute;
-  white-space: nowrap; 
-  font-size: 32px; /* Texto maior para mais impacto */
-  font-weight: 800; /* Super bold para destaque */
+  position: absolute; /* Permite o movimento livre (Requisito a) */
+  white-space: nowrap; /* Impede a quebra de linha */
+  font-size: 32px; 
+  font-weight: 800; 
   
-  /* Cor mais profunda e moderna para o letreiro */
   color: #004a80; 
   
-  /* Efeito de texto sutil (opcional) */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+  
+  /* Requisito f (Alinhamento): Alinha o texto verticalmente no centro do container.
+     O 'display: flex' e 'align-items: center' no .container já cuida disso,
+     mas este ajuste garante a verticalização perfeita do texto absoluto. */
+  top: 50%;
+  transform: translateY(-50%); 
+  
+  /* *NÃO* definir 'left' aqui, pois o JS controlará a posição inicial e o movimento. */
 }
