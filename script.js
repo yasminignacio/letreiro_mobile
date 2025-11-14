@@ -2,42 +2,47 @@
 const letreiro = document.getElementById('letreiro');
 const container = document.querySelector('.container');
 
-// Requisito g: Velocidade (maior número = mais rápido)
+// Requisito g: Velocidade
 const velocidade = 2; 
 
-let posicao = 0; // Posição inicial: 0 (canto esquerdo interno)
-let direcao = 1; // Requisito b: Direção inicial: 1 (direita)
+let posicao = 0; // Posição inicial
+let direcao = 1; // Direção inicial (direita)
+
+// O padding horizontal é de 15px em cada lado (style.css: padding: 10px 15px;)
+const PADDING_HORIZONTAL = 30; // 15px (esquerda) + 15px (direita)
 
 /**
  * Função principal para mover o letreiro.
  */
 function moverLetreiro() {
-  // Obtém os tamanhos e as dimensões internas do container
+  
+  // 1. Obtém as dimensões
   const larguraLetreiro = letreiro.offsetWidth;
-  // clientWidth: Largura interna do conteúdo (ignora padding e bordas)
-  const larguraInternaContainer = container.clientWidth; 
+  // Largura total do container (inclui padding)
+  const larguraTotalContainer = container.offsetWidth; 
   
-  // O limite esquerdo é 0 (borda esquerda interna)
-  const LIMITE_ESQUERDO = 0; 
+  // O limite esquerdo é o valor do padding (15px)
+  const LIMITE_ESQUERDO = 15; 
   
-  // O limite direito é a largura interna menos a largura do letreiro
-  const LIMITE_DIREITO = larguraInternaContainer - larguraLetreiro; 
+  // O limite direito é a borda direita (largura total) MENOS o padding direito (15px) 
+  // MENOS a largura do próprio letreiro
+  const LIMITE_DIREITO = larguraTotalContainer - 15 - larguraLetreiro; 
 
-  // 1. Atualiza a posição
+  // 2. Atualiza a posição
   posicao += direcao * velocidade;
   letreiro.style.left = posicao + "px"; // Move o elemento
 
-  // 2. Inverte a direção e corrige a posição (Correção de Bug)
+  // 3. Inverte a direção e corrige a posição
 
   if (posicao >= LIMITE_DIREITO) {
     // Atingiu o limite direito
     direcao = -1; // Inverte para a esquerda
-    // Força o letreiro para a posição exata do limite
+    // Força o letreiro para a posição exata
     posicao = LIMITE_DIREITO; 
   } else if (posicao <= LIMITE_ESQUERDO) {
     // Atingiu o limite esquerdo
     direcao = 1; // Inverte para a direita
-    // Força o letreiro para a posição exata do limite
+    // Força o letreiro para a posição exata
     posicao = LIMITE_ESQUERDO;
   }
 
@@ -45,5 +50,7 @@ function moverLetreiro() {
   requestAnimationFrame(moverLetreiro);
 }
 
+// Inicializa a posição do letreiro com o padding inicial
+letreiro.style.left = '15px'; 
 // Inicia o letreiro
 moverLetreiro();
