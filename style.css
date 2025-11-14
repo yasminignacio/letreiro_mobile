@@ -1,32 +1,84 @@
-/* Define a largura e altura da tela */
+/*
+ * ----------------------------------------------------
+ * ESTILOS GLOBAIS E CENTRALIZAÇÃO
+ * ----------------------------------------------------
+ */
 body {
   margin: 0;
   height: 100vh;
+  /* Fundo com gradiente suave */
+  background: linear-gradient(135deg, #f0f4f8 0%, #e0e7ee 100%); 
+  font-family: 'Poppins', sans-serif; /* Tipografia mais moderna */
+  color: #333;
+  
+  /* Flexbox para centralização total */
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center;     /* Centraliza verticalmente */
-  background-color: #f0f4f8;
-  font-family: Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Área onde o letreiro se movimenta */
+/*
+ * ----------------------------------------------------
+ * ÁREA DO CONTAINER/LETREIRO
+ * ----------------------------------------------------
+ */
 .container {
   position: relative;
-  width: 80%;   /* largura da área visível */
-  height: 100px; /* altura da área do letreiro */
-  border: 3px solid #0077cc;
-  background-color: #e8f5ff;
-  overflow: hidden; /* impede que o texto saia da área */
-  padding: 10px;    /* espaço livre em torno do letreiro */
+  width: 90%;   /* Aumenta a largura para melhor aproveitamento em telas maiores */
+  max-width: 900px; /* Limite máximo para não esticar demais em monitores grandes */
+  height: 120px; /* Aumenta a altura para destaque */
+  
+  /* Borda sutil e arredondada com sombra */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1), /* Sombra principal */
+    0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    
+  /* Cor de fundo mais clara e elegante */
+  background-color: #ffffff; 
+  
+  overflow: hidden; 
+  padding: 10px 15px; /* Ajusta o padding */
   display: flex;
   align-items: center;
 }
 
-/* Estilo do letreiro */
+/* Adiciona um efeito de máscara (opcional) para o texto parecer surgir/desaparecer nas bordas */
+/*
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50px; 
+  height: 100%;
+  z-index: 10;
+}
+.container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+*/
+
+/*
+ * ----------------------------------------------------
+ * ESTILO DO LETREIRO
+ * ----------------------------------------------------
+ */
 #letreiro {
   position: absolute;
-  white-space: nowrap; /* impede quebra de linha */
-  font-size: 24px;
-  font-weight: bold;
-  color: #0077cc;
+  white-space: nowrap; 
+  font-size: 32px; /* Texto maior para mais impacto */
+  font-weight: 800; /* Super bold para destaque */
+  
+  /* Cor mais profunda e moderna para o letreiro */
+  color: #004a80; 
+  
+  /* Efeito de texto sutil (opcional) */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
 }
